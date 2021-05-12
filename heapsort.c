@@ -14,53 +14,53 @@ void swap2(char **a, char **b)
 
 void heapify1(int *arr, int n, int i)
 {
-int largest = i;
-int l = i*2 +1;
-int r = i*2 +2;
-if (l < n && arr[l] > arr[largest])
-largest=l;
-if (r<n && arr[r] > arr[largest])
-largest=r;
-if(largest != i)
-{
-swap(&arr[i], &arr[largest]);
-heapify1(arr, n, largest);
-}
+    int largest = i;
+    int l = i*2 +1;
+    int r = i*2 +2;
+    if (l < n && arr[l] > arr[largest])
+        largest=l;
+    if (r<n && arr[r] > arr[largest])
+        largest=r;
+    if(largest != i)
+    {
+        swap(&arr[i], &arr[largest]);
+        heapify1(arr, n, largest);
+    }
 }
 void heapify2(char **arr, int n, int i)
 {
-int largest = i;
-int l = i*2 +1;
-int r = i*2 +2;
-if (l < n && strcmp(arr[l], arr[largest])>0)
-largest=l;
-if (r<n && strcmp(arr[r], arr[largest])>0)
-largest=r;
-if(largest != i)
-{
-swap2(arr+i, arr+largest);
-heapify2(arr, n, largest);
-}
+    int largest = i;
+    int l = i*2 +1;
+    int r = i*2 +2;
+    if (l < n && strcmp(arr[l], arr[largest])>0)
+        largest=l;
+    if (r<n && strcmp(arr[r], arr[largest])>0)
+        largest=r;
+    if(largest != i)
+    {
+        swap2(arr+i, arr+largest);
+        heapify2(arr, n, largest);
+    }
 }
 void heapSort1(int *arr, int n)
 {
-for (int i= n/2-1;i>=0; i--)
-heapify1(arr, n, i);
-for (int i=n-1; i>0; i--)
-{
-swap(&arr[0], &arr[i]);
-heapify1(arr, i, 0);
-}
+    for (int i= n/2-1;i>=0; i--)
+    heapify1(arr, n, i);
+    for (int i=n-1; i>0; i--)
+    {
+        swap(&arr[0], &arr[i]);
+        heapify1(arr, i, 0);
+    }
 }
 void heapSort2(char **arr, int n)
 {
-for (int i= n/2-1;i>=0; i--)
-heapify2(arr, n, i);
-for (int i=n-1; i>0; i--)
-{
-swap2(arr, arr+i);
-heapify2(arr, i, 0);
-}
+    for (int i= n/2-1;i>=0; i--)
+    heapify2(arr, n, i);
+    for (int i=n-1; i>0; i--)
+    {
+        swap2(arr, arr+i);
+        heapify2(arr, i, 0);
+    }
 }
 
 int main()
