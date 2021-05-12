@@ -1,11 +1,18 @@
 #include "common.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <sys/time.h>
+#include <unistd.h>
+
 void merge1(int *arr, int head, int mid, int tail)
 {
     int lenA = mid - head + 1;
     int lenB = tail - (mid + 1) + 1;
-    int *A=malloc(lenA);
-    int *B=malloc(lenB);
+    int *A=malloc(sizeof(int)*lenA);
+    int *B=malloc(sizeof(int)*lenB);
     for(int i = 0; i < lenA; i++)
         A[i] = arr[head + i];
     for(int i = 0; i < lenB; i++)
@@ -43,19 +50,20 @@ void merge2(char **arr, int head, int mid, int tail)
     int lenA = mid - head + 1;
     int lenB = tail - (mid + 1) + 1;
     char **A=malloc(sizeof(char*)*lenA);
+    for(int i=0;i<lenA;i++)
+        *(A+i) = malloc(100*sizeof(char));
     char **B=malloc(sizeof(char*)*lenB);
+    for(int i=0;i<lenB;i++)
+        *(B+i) = malloc(100*sizeof(char));
     for(int i = 0; i < lenA; i++)
     {
-        A[i] = malloc(sizeof(arr[head+i]));
         strcpy(A[i], arr[head+i]);
     }
     for(int i = 0; i < lenB; i++)
     {
-    B[i] = malloc(sizeof(arr[mid+i+1]);
         strcpy(B[i] , arr[mid + 1 + i]);
     }
-    i = 0
-    int j = 0, k = head;
+    int i = 0, j = 0, k = head;
     while(i < lenA && j < lenB)
     {
         if(strcmp(A[i], B[j])<0)
@@ -189,12 +197,12 @@ int main()
     gettimeofday(&tv3, NULL);
     mergesort2(arrstr, 0, 1000000-1);
     gettimeofday(&tv4, NULL);
-    /*for (int i=0; i < 1000000; i++)
+    for (int i=0; i < 1000000; i++)
     {
         for(int j=0; j<100;j++)
             printf("%c", arrstr[i][j]);
         printf("\n");
-    }*/
+    }
     diff = (tv4.tv_sec - tv3.tv_sec) + (tv4.tv_usec - tv3.tv_usec) / 1000000.0;
     printf("%fs\n", diff);
     fclose(file2);
