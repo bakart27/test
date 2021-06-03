@@ -47,6 +47,7 @@ int main(int argv, char *argc[])
     {
         if(strcmp(argc[cnt],"-bst")==0)
         {
+            printf("bst:\n");
             int *tmp, i=0, j=0;
             BST *root=NULL;
             gettimeofday(&tv1, NULL);
@@ -59,7 +60,7 @@ int main(int argv, char *argc[])
             inorder(root);
             gettimeofday(&tv2, NULL);
             double diff = (tv2.tv_sec-tv1.tv_sec) + (tv2.tv_usec-tv1.tv_usec) / 1000000.0;
-            printf("bstsettime: %fs\n", diff);
+            printf("building time: %fs sec\n", diff);
             gettimeofday(&tv3, NULL);
             while(j<len2)
             {
@@ -70,10 +71,11 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv4, NULL);
             diff = (tv4.tv_sec-tv3.tv_sec) + (tv4.tv_usec-tv3.tv_usec) / 1000000.0;
-            printf("bstsearchtime: %fs\n", diff);
+            printf("query time: %fs sec\n", diff);
         }
         else if(strcmp(argc[cnt],"-bs")==0)
         {
+            printf("bs:\n");
             int ans[len1], ans2[len2];
             for(int i=0;i<len1;i++)
             	ans[i]=numstr1[i];
@@ -94,18 +96,19 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv2, NULL);
             double diff = (tv2.tv_sec-tv1.tv_sec) + (tv2.tv_usec-tv1.tv_usec) / 1000000.0;
-            printf("bsinserttime: %fs\n", diff);
+            printf("building time: %fs sec\n", diff);
             int no;
             gettimeofday(&tv3, NULL);
             for(int i=0; i<len2; i++)
             	no=binarysearch(ans, ans2[i], sizeof(ans2)/sizeof(int));
             gettimeofday(&tv4, NULL);
             diff = (tv4.tv_sec-tv3.tv_sec) + (tv4.tv_usec-tv3.tv_usec) / 1000000.0;
-            printf("bssearchtime: %fs\n", diff);
+            printf("query time: %fs sec\n", diff);
 
         }
         else if(strcmp(argc[cnt],"-arr")==0)
         {
+            printf("arr:\n");
             int ans[len1], ans2[len2];
             for(int i=0;i<len1;i++)
             	ans[i]=numstr1[i];
@@ -126,7 +129,7 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv2, NULL);
             double diff = (tv2.tv_sec-tv1.tv_sec) + (tv2.tv_usec-tv1.tv_usec) / 1000000.0;
-            printf("arrsettime: %fs\n", diff);
+            printf("building time: %fs sec\n", diff);
             gettimeofday(&tv3, NULL);
             for(int i=0;i<len2;i++)
             {
@@ -138,10 +141,11 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv4, NULL);
             diff = (tv4.tv_sec-tv3.tv_sec) + (tv4.tv_usec-tv3.tv_usec) / 1000000.0;
-            printf("arrsearchtime: %fs\n", diff);
+            printf("query time: %fs sec\n", diff);
         }
         else if(strcmp(argc[cnt],"-ll")==0)
         {
+            printf("ll:\n");
             int *tmp, i=0, j=0;
             struct nodell *head=NULL;
             gettimeofday(&tv1, NULL);
@@ -153,7 +157,7 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv2, NULL);
             double diff = (tv2.tv_sec-tv1.tv_sec) + (tv2.tv_usec-tv1.tv_usec) / 1000000.0;
-            printf("llsettime: %fs\n", diff);
+            printf("building time: %fs sec\n", diff);
             gettimeofday(&tv3, NULL);
             while(j<len2)
             {
@@ -164,7 +168,7 @@ int main(int argv, char *argc[])
             }
             gettimeofday(&tv4, NULL);
             diff = (tv4.tv_sec-tv3.tv_sec) + (tv4.tv_usec-tv3.tv_usec) / 1000000.0;
-            printf("llsearchtime: %fs\n", diff);
+            printf("query time: %fs sec\n", diff);
         }
         cnt++;
     }
