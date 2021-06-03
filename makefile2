@@ -1,0 +1,4 @@
+all: main.c bs.c bst.c ll.c
+  gcc main.c bs.c bst.c ll.c -o main
+clean:
+  rm main
